@@ -25,6 +25,9 @@ interface IOptions {
 	resolves: Record<number, PromiseConstructor>;
 } */
 
+	/**
+	 * 
+	 */
 export abstract class AbstractApi {
 	// private wsConnections: IConnectionState[];
 
