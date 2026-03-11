@@ -1,4 +1,4 @@
-import { PlayingContentInfo } from ".";
+import type {PlayingContentInfo} from '.';
 
 export interface IPlayingContentInfoRadio {
 	broadcastFreq: number;
@@ -24,5 +24,5 @@ export interface IPlayingContentInfoRadio {
 	uri: string;
 }
 export function isContentInfoRadio(content: PlayingContentInfo): content is IPlayingContentInfoRadio {
-	return content.source.match(/^radio:/) ? true : false;
+	return !!content.source.match(/^radio:/);
 }

@@ -1,5 +1,5 @@
-import {VER, PATH} from '.';
-import {JsonCallback} from '../../../lib/AbstractApi';
+import type {JsonCallback} from '../../../lib/AbstractApi';
+import {PATH, VER} from '.';
 
 interface IPlaybackModeCandidate {
 	isAvailable: boolean;
@@ -24,6 +24,11 @@ export type PlaybackTarget = 'autoPlayback' | 'playType' | 'repeatType' | 'shuff
 /**
  * https://developer.sony.com/develop/audio-control-api/api-references/api-overview-2#_getplaybackmodesettings_v1_0
  */
-export function getPlaybackModeSettings(id: number, target: PlaybackTarget | undefined, uri: string | undefined, callback: JsonCallback<IPlaybackModeSetting[]>) {
+export function getPlaybackModeSettings(
+	id: number,
+	target: PlaybackTarget | undefined,
+	uri: string | undefined,
+	callback: JsonCallback<IPlaybackModeSetting[]>,
+) {
 	return callback(PATH, id, 'getPlaybackModeSettings', [{target: target || '', uri}], VER);
 }

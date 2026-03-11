@@ -1,5 +1,5 @@
-import {VER, PATH} from '.';
-import {JsonCallback} from '../../../lib/AbstractApi';
+import type {JsonCallback} from '../../../lib/AbstractApi';
+import {PATH, VER} from '.';
 
 /**
  * https://developer.sony.com/develop/audio-control-api/api-references/api-overview-2#_setaudiovolume_v1_1

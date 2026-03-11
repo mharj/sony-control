@@ -2,13 +2,13 @@ import {AbstractSonyStrDn1080} from '../map/SonyStrDn1080';
 
 const extInput = ['bd-dvd', 'btAudio', 'game', 'hdmi', 'line', 'sat-catv', 'source', 'tv', 'video', 'airPlay', 'sacd-cd'] as const;
 
-type ExtInput = typeof extInput[number];
+type ExtInput = (typeof extInput)[number];
 export interface ISourceSelection {
 	extInput: ExtInput;
 }
 
 export function isExtInput(value: string): value is ExtInput {
-	return extInput.findIndex((e) => e === value) !== -1;
+	return extInput.indexOf(value as ExtInput) !== -1;
 }
 
 const dlna = ['music'] as const;
@@ -23,6 +23,36 @@ const multiroom = ['audio'] as const;
 
 const cast = ['audio'] as const;
 
+type SonyStrDn1080SourceSelector =
+	| {
+			source: 'extInput';
+			device: 'btAudio' | 'hdmi' | 'bd-dvd' | 'game' | 'line' | 'sat-catv' | 'source' | 'tv' | 'video' | 'airPlay' | 'sacd-cd';
+	  }
+	| {
+			source: 'dlna';
+			device: 'music';
+	  }
+	| {
+			source: 'storage';
+			device: 'usb1';
+	  }
+	| {
+			source: 'radio';
+			device: 'fm';
+	  }
+	| {
+			source: 'netService';
+			device: 'audio';
+	  }
+	| {
+			source: 'multiroom';
+			device: 'audio';
+	  }
+	| {
+			source: 'cast';
+			device: 'audio';
+	  };
+
 const sourceSelection = {
 	extInput,
 	dlna,
@@ -33,24 +63,28 @@ const sourceSelection = {
 	cast,
 } as const;
 
-function isValidSourceSelection(scheme: string, device: string) {
-	const schemeDevices = sourceSelection[scheme];
+export type SourceSelection = keyof typeof sourceSelection;
+
+function isValidSourceSelection({source, device}: SonyStrDn1080SourceSelector) {
+	const schemeDevices = sourceSelection[source];
 	if (!schemeDevices) {
 		return false;
 	}
-	return schemeDevices.findIndex((d: string) => d === device) !== -1;
+	return (schemeDevices as readonly string[]).indexOf(device) !== -1;
 }
 
 /**
  * user facing class (with helper methods)
+ * @example
+ * const device = new SonyStrDn1080('http://192.168.0.61:10000/sony');
  */
 
 export class SonyStrDn1080 extends AbstractSonyStrDn1080 {
-	public async setSource(scheme = 'extInput', device = 'btAudio', options?: {port?: number; zone?: number}) {
-		if (!isValidSourceSelection(scheme, device)) {
+	public setSource(selector: SonyStrDn1080SourceSelector, options?: {port?: number; zone?: number}) {
+		if (!isValidSourceSelection(selector)) {
 			throw new Error('uknown scheme or device combination');
 		}
-		let deviceResourceUri = `${scheme}:${device}`;
+		let deviceResourceUri = `${selector.source}:${selector.device}`;
 		if (options?.port !== undefined) {
 			deviceResourceUri += `?port=${options.port}`;
 		}
@@ -63,17 +97,17 @@ export class SonyStrDn1080 extends AbstractSonyStrDn1080 {
 		if (port < 1 || port > 4) {
 			port = 1;
 		}
-		return this.setSource('extInput', 'hdmi', {port});
+		return this.setSource({source: 'extInput', device: 'hdmi'}, {port});
 	}
 	public setAudioService() {
-		return this.setSource('netService', 'audio');
+		return this.setSource({source: 'netService', device: 'audio'});
 	}
 	public setBluetoothAudioSource() {
-		return this.setSource('extInput', 'btAudio');
+		return this.setSource({source: 'extInput', device: 'btAudio'});
 	}
 
 	public setDnlaAudioSource() {
-		return this.setSource('dlna', 'audio');
+		return this.setSource({source: 'dlna', device: 'music'});
 	}
 	public setMusicSoundField() {
 		return this.setSoundSettings('soundField', 'music');

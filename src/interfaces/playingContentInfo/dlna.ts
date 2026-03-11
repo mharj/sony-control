@@ -1,4 +1,4 @@
-import {PlayingContentInfo} from '.';
+import type {PlayingContentInfo} from '.';
 
 export interface IPlayingContentInfoDlna {
 	contentKind: string;
@@ -17,5 +17,5 @@ export interface IPlayingContentInfoDlna {
 }
 
 export function isContentInfoDlna(content: PlayingContentInfo): content is IPlayingContentInfoDlna {
-	return content.source.match(/^storage:/) ? true : false;
+	return !!content.source.match(/^storage:/);
 }

@@ -1,8 +1,8 @@
-import {IErrorResponse, IPayloadResponse} from './';
+import type {IErrorResponse, IPayloadResponse} from './';
 
 export class AudioApiError extends Error {
 	private code: number;
-	constructor(command: string, code: number, message: string) {
+	public constructor(command: string, code: number, message: string) {
 		super(`${command}: ${message}`);
 		this.name = 'AudioApiError';
 		this.code = code;

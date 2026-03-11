@@ -1,25 +1,25 @@
-import {AbstractApi} from '../lib/AbstractApi';
-import {getPowerSettings} from '../api/system/v1_0/getPowerSettings';
-import {getSystemInformation} from '../api/system/v1_5/getSystemInformation';
-import {getSupportedApiInfo} from '../api/guide/v1_0/getSupportedApiInfo';
-import {getSchemeList} from '../api/avContent/v1_0/getSchemeList';
-import {getPowerStatus} from '../api/system/v1_1/getPowerStatus';
-import {getCurrentExternalTerminalsStatus} from '../api/avContent/v1_0/getCurrentExternalTerminalsStatus';
 import {getCustomEqualizerSettings} from '../api/audio/v1_0/getCustomEqualizerSettings';
-import {getInterfaceInformation} from '../api/system/v1_0/getInterfaceInformation';
-import {getPlaybackModeSettings, PlaybackTarget} from '../api/avContent/v1_0/getPlaybackModeSettings';
-import {getPlayingContentInfo} from '../api/avContent/v1_2/getPlayingContentInfo';
-import {getSourceList} from '../api/avContent/v1_2/getSourceList';
-import {getVolumeInformation} from '../api/audio/v1_1/getVolumeInformation';
 import {getSoundSettings} from '../api/audio/v1_1/getSoundSettings';
-import {IPowerSettings, setPowerSettings} from '../api/system/v1_0/setPowerSettings';
-import {setPowerStatus} from '../api/system/v1_1/setPowerStatus';
-import {IPlayContentParams, setPlayContent} from '../api/avContent/v1_2/setPlayContent';
+import {getVolumeInformation} from '../api/audio/v1_1/getVolumeInformation';
+import {setAudioMute} from '../api/audio/v1_1/setAudioMute';
+import {setAudioVolume} from '../api/audio/v1_1/setAudioVolume';
+import {setSoundSettings} from '../api/audio/v1_1/setSoundSettings';
+import {getCurrentExternalTerminalsStatus} from '../api/avContent/v1_0/getCurrentExternalTerminalsStatus';
+import {getPlaybackModeSettings, type PlaybackTarget} from '../api/avContent/v1_0/getPlaybackModeSettings';
+import {getSchemeList} from '../api/avContent/v1_0/getSchemeList';
 import {setPlayNextContent} from '../api/avContent/v1_0/setPlayNextContent';
 import {setPlayPreviousContent} from '../api/avContent/v1_0/setPlayPreviousContent';
-import {setAudioVolume} from '../api/audio/v1_1/setAudioVolume';
-import {setAudioMute} from '../api/audio/v1_1/setAudioMute';
-import {setSoundSettings} from '../api/audio/v1_1/setSoundSettings';
+import {getPlayingContentInfo} from '../api/avContent/v1_2/getPlayingContentInfo';
+import {getSourceList} from '../api/avContent/v1_2/getSourceList';
+import {type IPlayContentParams, setPlayContent} from '../api/avContent/v1_2/setPlayContent';
+import {getSupportedApiInfo} from '../api/guide/v1_0/getSupportedApiInfo';
+import {getInterfaceInformation} from '../api/system/v1_0/getInterfaceInformation';
+import {getPowerSettings} from '../api/system/v1_0/getPowerSettings';
+import {type IPowerSettings, setPowerSettings} from '../api/system/v1_0/setPowerSettings';
+import {getPowerStatus} from '../api/system/v1_1/getPowerStatus';
+import {setPowerStatus} from '../api/system/v1_1/setPowerStatus';
+import {getSystemInformation} from '../api/system/v1_5/getSystemInformation';
+import {AbstractApi} from '../lib/AbstractApi';
 
 /**
  * Generic API
@@ -57,37 +57,37 @@ export abstract class AbstractGenericAudio extends AbstractApi {
 	public getSystemInformation() {
 		return getSystemInformation(1, this.jsonCall);
 	}
-	public async getSupportedApiInfo() {
+	public getSupportedApiInfo() {
 		return getSupportedApiInfo(1, this.jsonCall);
 	}
-	public async getSchemeList() {
+	public getSchemeList() {
 		return getSchemeList(1, this.jsonCall);
 	}
-	public async getPowerSettings() {
+	public getPowerSettings() {
 		return getPowerSettings(1, this.jsonCall);
 	}
-	public async getPowerStatus() {
+	public getPowerStatus() {
 		return getPowerStatus(1, this.jsonCall);
 	}
-	public async setPowerSettings(settings: IPowerSettings[]) {
+	public setPowerSettings(settings: IPowerSettings[]) {
 		return setPowerSettings(1, settings, this.jsonCall);
 	}
-	public async setPowerStatus(status: 'active' | 'standby' | 'off') {
+	public setPowerStatus(status: 'active' | 'standby' | 'off') {
 		return setPowerStatus(1, status, this.jsonCall);
 	}
-	public async getVolumeInformation(output?: string) {
+	public getVolumeInformation(output?: string) {
 		return getVolumeInformation(1, output, this.jsonCall);
 	}
-	public async setPlayContent(params: IPlayContentParams) {
+	public setPlayContent(params: IPlayContentParams) {
 		return setPlayContent(1, params, this.jsonCall);
 	}
-	public async setAudioVolume(volume: number, output?: string) {
+	public setAudioVolume(volume: number, output?: string) {
 		return setAudioVolume(1, volume, output, this.jsonCall);
 	}
-	public async setAudioMute(mute: 'on' | 'off' | 'toggle', output?: string) {
+	public setAudioMute(mute: 'on' | 'off' | 'toggle', output?: string) {
 		return setAudioMute(1, mute, output, this.jsonCall);
 	}
-	public async setSoundSettings(target: string, value: string) {
+	public setSoundSettings(target: string, value: string) {
 		return setSoundSettings(1, target, value, this.jsonCall);
 	}
 }

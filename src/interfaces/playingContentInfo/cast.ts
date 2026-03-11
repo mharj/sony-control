@@ -1,4 +1,4 @@
-import {PlayingContentInfo} from '.';
+import type {PlayingContentInfo} from '.';
 
 export interface IPlayingContentInfoCast {
 	applicationName: string;

@@ -1,5 +1,5 @@
-import {VER, PATH} from '.';
-import {JsonCallback} from '../../../lib/AbstractApi';
+import type {JsonCallback} from '../../../lib/AbstractApi';
+import {PATH, VER} from '.';
 
 interface IPowerSettingCandidate {
 	isAvailable: boolean;

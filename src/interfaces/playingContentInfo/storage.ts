@@ -1,4 +1,4 @@
-import { PlayingContentInfo } from ".";
+import type {PlayingContentInfo} from '.';
 
 export interface IPlayingContentInfoStorage {
 	albumName: string;
@@ -34,5 +34,5 @@ export interface IPlayingContentInfoStorage {
 	};
 }
 export function isContentInfoStorage(content: PlayingContentInfo): content is IPlayingContentInfoStorage {
-	return content.source.match(/^storage:/) ? true : false;
+	return !!content.source.match(/^storage:/);
 }

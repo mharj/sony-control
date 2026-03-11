@@ -1,4 +1,4 @@
-import {PlayingContentInfo} from '.';
+import type {PlayingContentInfo} from '.';
 
 export interface IPlayingContentInfoExtInput {
 	contentKind: string;
@@ -9,5 +9,5 @@ export interface IPlayingContentInfoExtInput {
 }
 
 export function isContentInfoExtInput(content: PlayingContentInfo): content is IPlayingContentInfoExtInput {
-	return content.source.match(/^extInput:/) ? true : false;
+	return !!content.source.match(/^extInput:/);
 }
