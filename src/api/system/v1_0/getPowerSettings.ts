@@ -19,6 +19,6 @@ export interface IPowerSetting {
 /**
  * No documentation found
  */
-export function getPowerSettings(id: number, callback: JsonCallback<IPowerSetting[]>) {
-	return callback(PATH, id, 'getPowerSettings', [{settings: []}], VER);
+export function getPowerSettings_v1_0(callback: JsonCallback<IPowerSetting[]>) {
+	return callback({path: PATH, method: 'getPowerSettings', params: [{settings: []}], version: VER});
 }

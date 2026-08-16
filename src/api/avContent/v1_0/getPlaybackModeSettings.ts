@@ -24,11 +24,6 @@ export type PlaybackTarget = 'autoPlayback' | 'playType' | 'repeatType' | 'shuff
 /**
  * https://developer.sony.com/develop/audio-control-api/api-references/api-overview-2#_getplaybackmodesettings_v1_0
  */
-export function getPlaybackModeSettings(
-	id: number,
-	target: PlaybackTarget | undefined,
-	uri: string | undefined,
-	callback: JsonCallback<IPlaybackModeSetting[]>,
-) {
-	return callback(PATH, id, 'getPlaybackModeSettings', [{target: target || '', uri}], VER);
+export function getPlaybackModeSettings(target: PlaybackTarget | undefined, uri: string | undefined, callback: JsonCallback<IPlaybackModeSetting[]>) {
+	return callback({path: PATH, method: 'getPlaybackModeSettings', params: [{target: target || '', uri}], version: VER});
 }

@@ -13,13 +13,13 @@ import {getPlayingContentInfo} from '../api/avContent/v1_2/getPlayingContentInfo
 import {getSourceList} from '../api/avContent/v1_2/getSourceList';
 import {type IPlayContentParams, setPlayContent} from '../api/avContent/v1_2/setPlayContent';
 import {getSupportedApiInfo} from '../api/guide/v1_0/getSupportedApiInfo';
-import {getInterfaceInformation} from '../api/system/v1_0/getInterfaceInformation';
-import {getPowerSettings} from '../api/system/v1_0/getPowerSettings';
-import {type IPowerSettings, setPowerSettings} from '../api/system/v1_0/setPowerSettings';
+import {getInterfaceInformation_v1_0} from '../api/system/v1_0/getInterfaceInformation';
+import {getPowerSettings_v1_0} from '../api/system/v1_0/getPowerSettings';
+import {type SetPowerSettingParams_v1_0, setPowerSettings_v1_0} from '../api/system/v1_0/setPowerSettings';
 import {getPowerStatus} from '../api/system/v1_1/getPowerStatus';
 import {setPowerStatus} from '../api/system/v1_1/setPowerStatus';
 import {getSystemInformation} from '../api/system/v1_5/getSystemInformation';
-import {AbstractApi} from '../lib/AbstractApi';
+import {AbstractApi, type ApiService} from '../lib/AbstractApi';
 
 /**
  * Generic API
@@ -28,66 +28,66 @@ import {AbstractApi} from '../lib/AbstractApi';
 
 export abstract class AbstractGenericAudio extends AbstractApi {
 	public setPlayPreviousContent(output?: string) {
-		return setPlayPreviousContent(1, output, this.jsonCall);
+		return setPlayPreviousContent(output, this.jsonFirstResultCall);
 	}
 	public setPlayNextContent(output?: string) {
-		return setPlayNextContent(1, output, this.jsonCall);
+		return setPlayNextContent(output, this.jsonFirstResultCall);
 	}
 	public getSoundSettings(target?: string) {
-		return getSoundSettings(1, target, this.jsonCall);
+		return getSoundSettings(target, this.jsonFirstResultCall);
 	}
 	public getSourceList(scheme: string) {
-		return getSourceList(1, scheme, this.jsonCall);
+		return getSourceList(scheme, this.jsonFirstResultCall);
 	}
 	public getPlayingContentInfo(output?: string) {
-		return getPlayingContentInfo(1, output, this.jsonCall);
+		return getPlayingContentInfo(output, this.jsonFirstResultCall);
 	}
 	public getPlaybackModeSettings(target?: PlaybackTarget | undefined, uri?: string | undefined) {
-		return getPlaybackModeSettings(1, target, uri, this.jsonCall);
+		return getPlaybackModeSettings(target, uri, this.jsonFirstResultCall);
 	}
 	public getInterfaceInformation() {
-		return getInterfaceInformation(1, this.jsonCall);
+		return getInterfaceInformation_v1_0(this.jsonFirstResultCall);
 	}
 	public getCustomEqualizerSettings(target?: string) {
-		return getCustomEqualizerSettings(1, target, this.jsonCall);
+		return getCustomEqualizerSettings(target, this.jsonFirstResultCall);
 	}
 	public getCurrentExternalTerminalsStatus() {
-		return getCurrentExternalTerminalsStatus(1, this.jsonCall);
+		return getCurrentExternalTerminalsStatus(this.jsonFirstResultCall);
 	}
 	public getSystemInformation() {
-		return getSystemInformation(1, this.jsonCall);
+		return getSystemInformation(this.jsonFirstResultCall);
 	}
-	public getSupportedApiInfo() {
-		return getSupportedApiInfo(1, this.jsonCall);
+	public getSupportedApiInfo(services?: ApiService[]) {
+		return getSupportedApiInfo(services, this.jsonFirstResultCall);
 	}
 	public getSchemeList() {
-		return getSchemeList(1, this.jsonCall);
+		return getSchemeList(this.jsonFirstResultCall);
 	}
 	public getPowerSettings() {
-		return getPowerSettings(1, this.jsonCall);
+		return getPowerSettings_v1_0(this.jsonFirstResultCall);
 	}
 	public getPowerStatus() {
-		return getPowerStatus(1, this.jsonCall);
+		return getPowerStatus(this.jsonFirstResultCall);
 	}
-	public setPowerSettings(settings: IPowerSettings[]) {
-		return setPowerSettings(1, settings, this.jsonCall);
+	public setPowerSettings(settings: SetPowerSettingParams_v1_0[]) {
+		return setPowerSettings_v1_0(settings, this.jsonFirstResultCall);
 	}
 	public setPowerStatus(status: 'active' | 'standby' | 'off') {
-		return setPowerStatus(1, status, this.jsonCall);
+		return setPowerStatus(status, this.jsonFirstResultCall);
 	}
 	public getVolumeInformation(output?: string) {
-		return getVolumeInformation(1, output, this.jsonCall);
+		return getVolumeInformation(output, this.jsonFirstResultCall);
 	}
 	public setPlayContent(params: IPlayContentParams) {
-		return setPlayContent(1, params, this.jsonCall);
+		return setPlayContent(params, this.jsonFirstResultCall);
 	}
 	public setAudioVolume(volume: number, output?: string) {
-		return setAudioVolume(1, volume, output, this.jsonCall);
+		return setAudioVolume(volume, output, this.jsonFirstResultCall);
 	}
 	public setAudioMute(mute: 'on' | 'off' | 'toggle', output?: string) {
-		return setAudioMute(1, mute, output, this.jsonCall);
+		return setAudioMute(mute, output, this.jsonFirstResultCall);
 	}
 	public setSoundSettings(target: string, value: string) {
-		return setSoundSettings(1, target, value, this.jsonCall);
+		return setSoundSettings(target, value, this.jsonFirstResultCall);
 	}
 }

@@ -1,0 +1,23 @@
+{
+  "id": 1,
+  "result": [
+    [
+      {
+        "iconUrl": "",
+        "isBrowsable": true,
+        "isPlayable": true,
+        "meta": "meta:radio:fm",
+        "outputs": [
+          "extOutput:zone?zone=1",
+          "extOutput:zone?zone=2"
+        ],
+        "playAction": "startPlay",
+        "protocols": [
+          "scalar"
+        ],
+        "source": "radio:fm",
+        "title": "FM"
+      }
+    ]
+  ]
+}

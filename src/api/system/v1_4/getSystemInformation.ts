@@ -2,10 +2,28 @@ import type {JsonCallback} from '../../../lib/AbstractApi';
 import {PATH, VER} from '.';
 
 export interface ISystemInformation {
-	bdAddr: string;
 	macAddr: string;
 	version: string;
 	wirelessMacAddr: string;
+	bdAddr: string;
+	product?: string | undefined;
+	region?: string | undefined;
+	language?: string | undefined;
+	model?: string | undefined;
+	serial?: string | undefined;
+	name?: string | undefined;
+	generation?: string | undefined;
+	area?: string | undefined;
+	cid?: string | undefined;
+	helpUrl?: string | undefined;
+	deviceID?: string | undefined;
+	duid?: string | undefined;
+	esn?: string | undefined;
+	iconUrl?: string | undefined;
+	ssid?: string | undefined;
+	initialPowerOnTime?: string | undefined;
+	lastPowerOnTime?: string | undefined;
+	bleID?: string | undefined;
 }
 
 /**
@@ -13,6 +31,6 @@ export interface ISystemInformation {
  *
  * TODO: check as dn1080 reports much less data than API documentation
  */
-export function getSystemInformation(id: number, callback: JsonCallback<ISystemInformation>) {
-	return callback(PATH, id, 'getSystemInformation', [], VER);
+export function getSystemInformation_v1_4(callback: JsonCallback<ISystemInformation>) {
+	return callback({path: PATH, method: 'getSystemInformation', params: [], version: VER});
 }

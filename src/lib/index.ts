@@ -6,8 +6,16 @@ export interface IPayloadResponse<T = any> {
 	result: [T];
 }
 
+export interface IPayloadResultsResponse<T = any> {
+	results: [T];
+}
+
 export function isResult(response: any): response is IPayloadResponse {
 	return 'result' in response && Array.isArray(response.result);
+}
+
+export function isResults(response: any): response is IPayloadResultsResponse {
+	return 'results' in response && Array.isArray(response.results);
 }
 
 export function decodeUri(value: string) {

@@ -15,6 +15,6 @@ export interface IExternalTerminalStatus {
 /**
  * https://developer.sony.com/develop/audio-control-api/api-references/api-overview-2#_getcurrentexternalterminalsstatus_v1_0
  */
-export function getCurrentExternalTerminalsStatus(id: number, callback: JsonCallback<IExternalTerminalStatus[]>) {
-	return callback(PATH, id, 'getCurrentExternalTerminalsStatus', [], VER);
+export function getCurrentExternalTerminalsStatus(callback: JsonCallback<IExternalTerminalStatus[]>) {
+	return callback({path: PATH, method: 'getCurrentExternalTerminalsStatus', params: [], version: VER});
 }

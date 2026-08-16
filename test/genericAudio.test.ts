@@ -1,5 +1,6 @@
-import {beforeAll, describe, expect, it} from 'vitest';
+import {beforeAll, beforeEach, describe, expect, it} from 'vitest';
 import {GenericAudio} from '../src/index';
+import {MockFetch} from './testFetch';
 
 const audioUrlEnv = process.env.AUDIO_URL as string;
 
@@ -7,7 +8,10 @@ let amp: GenericAudio;
 
 describe('test Generic Audio', () => {
 	beforeAll(() => {
-		amp = new GenericAudio(audioUrlEnv);
+		amp = new GenericAudio(audioUrlEnv, {fetchClient: new MockFetch({storeDirectory: './test/dn1080', clone: true}).fetch});
+	});
+	beforeEach(() => {
+		amp.resetIdCounter();
 	});
 	it('should return interface information', async () => {
 		const interfaceInfo = await amp.getInterfaceInformation();

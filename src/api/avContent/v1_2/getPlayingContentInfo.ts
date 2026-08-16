@@ -13,6 +13,6 @@ export interface IPlayingContentInfo {
 /**
  * https://developer.sony.com/develop/audio-control-api/api-references/api-overview-2#_getplayingcontentinfo_v1_2
  */
-export function getPlayingContentInfo(id: number, output: string | undefined, callback: JsonCallback<IPlayingContentInfo[]>) {
-	return callback(PATH, id, 'getPlayingContentInfo', [{output: output || ''}], VER);
+export function getPlayingContentInfo(output: string | undefined, callback: JsonCallback<IPlayingContentInfo[]>) {
+	return callback({path: PATH, method: 'getPlayingContentInfo', params: [{output: output || ''}], version: VER});
 }

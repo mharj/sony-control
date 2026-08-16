@@ -1,0 +1,25 @@
+{
+  "id": 1,
+  "result": [
+    [
+      {
+        "scheme": "extInput"
+      },
+      {
+        "scheme": "radio"
+      },
+      {
+        "scheme": "storage"
+      },
+      {
+        "scheme": "dlna"
+      },
+      {
+        "scheme": "cast"
+      },
+      {
+        "scheme": "netService"
+      }
+    ]
+  ]
+}

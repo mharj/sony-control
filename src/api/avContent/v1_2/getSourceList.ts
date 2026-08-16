@@ -19,6 +19,6 @@ export interface ISourceList {
 /**
  * https://developer.sony.com/develop/audio-control-api/api-references/api-overview-2#_getsourcelist_v1_2
  */
-export function getSourceList(id: number, scheme: string, callback: JsonCallback<ISourceList[]>) {
-	return callback(PATH, id, 'getSourceList', [{scheme}], VER);
+export function getSourceList(scheme: string, callback: JsonCallback<ISourceList[]>) {
+	return callback({path: PATH, method: 'getSourceList', params: [{scheme}], version: VER});
 }

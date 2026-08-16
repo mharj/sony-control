@@ -34,6 +34,6 @@ export interface ISystemInformation {
  *
  * TODO: check actual info interface as there have been some differences on API and actual data
  */
-export function getSystemInformation(id: number, callback: JsonCallback<ISystemInformation>) {
-	return callback(PATH, id, 'getSystemInformation', [], VER);
+export function getSystemInformation(callback: JsonCallback<ISystemInformation>) {
+	return callback({path: PATH, method: 'getSystemInformation', params: [], version: VER});
 }

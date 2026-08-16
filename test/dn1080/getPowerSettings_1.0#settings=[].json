@@ -1,0 +1,45 @@
+{
+  "id": 1,
+  "result": [
+    [
+      {
+        "candidate": [
+          {
+            "isAvailable": true,
+            "title": "On",
+            "value": "on"
+          },
+          {
+            "isAvailable": true,
+            "title": "Off",
+            "value": "off"
+          }
+        ],
+        "currentValue": "off",
+        "target": "quickStartMode",
+        "title": "Network Standby",
+        "titleTextID": "system-networkstandby",
+        "type": "booleanTarget"
+      },
+      {
+        "candidate": [
+          {
+            "isAvailable": true,
+            "title": "On",
+            "value": "on"
+          },
+          {
+            "isAvailable": true,
+            "title": "Off",
+            "value": "off"
+          }
+        ],
+        "currentValue": "on",
+        "target": "wolMode",
+        "title": "IDMR_TEXT_XMBSETUP_REMOTE_START_STRING",
+        "titleTextID": "system-remotestart",
+        "type": "booleanTarget"
+      }
+    ]
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": 1,
+  "result": [
+    [
+      {
+        "maxVolume": 55,
+        "minVolume": 0,
+        "mute": "off",
+        "output": "extOutput:zone?zone=1",
+        "step": 1,
+        "volume": 22
+      },
+      {
+        "maxVolume": 55,
+        "minVolume": 0,
+        "mute": "off",
+        "output": "extOutput:zone?zone=2",
+        "step": 0,
+        "volume": -1
+      },
+      {
+        "maxVolume": 55,
+        "minVolume": 0,
+        "mute": "off",
+        "output": "extOutput:zone?zone=4",
+        "step": 0,
+        "volume": -1
+      }
+    ]
+  ]
+}

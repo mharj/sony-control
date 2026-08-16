@@ -1,0 +1,33 @@
+{
+  "id": 1,
+  "result": [
+    [
+      {
+        "deviceName": "USB",
+        "formattable": "unknown",
+        "freeCapacityMB": -1,
+        "isAvailable": "false",
+        "mounted": "unmounted",
+        "permission": "",
+        "position": "front",
+        "systemAreaCapacityMB": -1,
+        "uri": "storage:usb1",
+        "volumeLabel": "",
+        "wholeCapacityMB": -1
+      },
+      {
+        "deviceName": "USB",
+        "formattable": "unknown",
+        "freeCapacityMB": -1,
+        "isAvailable": "false",
+        "mounted": "unmounted",
+        "permission": "",
+        "position": "rear",
+        "systemAreaCapacityMB": -1,
+        "uri": "storage:usb2",
+        "volumeLabel": "",
+        "wholeCapacityMB": -1
+      }
+    ]
+  ]
+}

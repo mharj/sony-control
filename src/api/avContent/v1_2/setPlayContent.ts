@@ -13,6 +13,6 @@ export interface IPlayContentParams {
 /**
  * https://developer.sony.com/develop/audio-control-api/api-references/api-overview-2#_getsourcelist_v1_2
  */
-export function setPlayContent(id: number, params: IPlayContentParams, callback: JsonCallback<void>) {
-	return callback(PATH, id, 'setPlayContent', [params], VER);
+export function setPlayContent(params: IPlayContentParams, callback: JsonCallback<void>) {
+	return callback({path: PATH, method: 'setPlayContent', params: [params], version: VER});
 }

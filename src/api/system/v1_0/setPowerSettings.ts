@@ -1,10 +1,10 @@
 import type {JsonCallback} from '../../../lib/AbstractApi';
 import {PATH, VER} from '.';
 
-export interface IPowerSettings {
+export type SetPowerSettingParams_v1_0 = {
 	target: string;
 	value: string;
-}
+};
 
 /**
  * No documentation found
@@ -15,6 +15,6 @@ export interface IPowerSettings {
  * [{target: 'wolMode', value: 'on'}]
  * [{target: 'quickStartMode', value: 'off'}]
  */
-export function setPowerSettings(id: number, settings: IPowerSettings[], callback: JsonCallback<void>) {
-	return callback(PATH, id, 'setPowerSettings', [{settings}], VER);
+export function setPowerSettings_v1_0(settings: SetPowerSettingParams_v1_0[], callback: JsonCallback<void>) {
+	return callback({path: PATH, method: 'setPowerSettings', params: [{settings}], version: VER});
 }

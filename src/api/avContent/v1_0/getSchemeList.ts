@@ -8,6 +8,6 @@ export interface IScheme {
 /**
  * https://developer.sony.com/develop/audio-control-api/api-references/api-overview-2#_getschemelist_v1_0
  */
-export function getSchemeList(id: number, callback: JsonCallback<IScheme[]>) {
-	return callback(PATH, id, 'getSchemeList', [], VER);
+export function getSchemeList(callback: JsonCallback<IScheme[]>) {
+	return callback({path: PATH, method: 'getSchemeList', params: [], version: VER});
 }

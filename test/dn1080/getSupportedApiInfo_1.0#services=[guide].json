@@ -1,0 +1,47 @@
+{
+  "id": 1,
+  "result": [
+    [
+      {
+        "apis": [
+          {
+            "name": "getMethodTypes",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getServiceProtocols",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getSupportedApiInfo",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getVersions",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          }
+        ],
+        "protocols": [
+          "xhrpost:jsonizer"
+        ],
+        "service": "guide"
+      }
+    ]
+  ]
+}

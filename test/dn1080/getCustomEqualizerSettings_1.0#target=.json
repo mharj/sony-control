@@ -1,0 +1,143 @@
+{
+  "id": 1,
+  "result": [
+    [
+      {
+        "candidate": [
+          {
+            "isAvailable": true,
+            "max": 10,
+            "min": -10,
+            "step": 1
+          }
+        ],
+        "currentValue": "0.0",
+        "deviceUIInfo": "sliderVertical",
+        "isAvailable": true,
+        "target": "frontBassLevel",
+        "title": "Front Bass Level",
+        "titleTextID": "sound-equalizer-front-bass",
+        "type": "integerTarget"
+      },
+      {
+        "candidate": [
+          {
+            "isAvailable": true,
+            "max": 10,
+            "min": -10,
+            "step": 1
+          }
+        ],
+        "currentValue": "0.0",
+        "deviceUIInfo": "sliderVertical",
+        "isAvailable": true,
+        "target": "frontTrebleLevel",
+        "title": "Front Treble Level",
+        "titleTextID": "sound-equalizer-front-treble",
+        "type": "integerTarget"
+      },
+      {
+        "candidate": [
+          {
+            "isAvailable": true,
+            "max": 10,
+            "min": -10,
+            "step": 1
+          }
+        ],
+        "currentValue": "0.0",
+        "deviceUIInfo": "sliderVertical",
+        "isAvailable": true,
+        "target": "centerBassLevel",
+        "title": "Center Bass Level",
+        "titleTextID": "sound-equalizer-center-bass",
+        "type": "integerTarget"
+      },
+      {
+        "candidate": [
+          {
+            "isAvailable": true,
+            "max": 10,
+            "min": -10,
+            "step": 1
+          }
+        ],
+        "currentValue": "0.0",
+        "deviceUIInfo": "sliderVertical",
+        "isAvailable": true,
+        "target": "centerTrebleLevel",
+        "title": "Center Treble Level",
+        "titleTextID": "sound-equalizer-center-treble",
+        "type": "integerTarget"
+      },
+      {
+        "candidate": [
+          {
+            "isAvailable": true,
+            "max": 10,
+            "min": -10,
+            "step": 1
+          }
+        ],
+        "currentValue": "0.0",
+        "deviceUIInfo": "sliderVertical",
+        "isAvailable": true,
+        "target": "surroundBassLevel",
+        "title": "Surround Bass Level",
+        "titleTextID": "sound-equalizer-surround-bass",
+        "type": "integerTarget"
+      },
+      {
+        "candidate": [
+          {
+            "isAvailable": true,
+            "max": 10,
+            "min": -10,
+            "step": 1
+          }
+        ],
+        "currentValue": "0.0",
+        "deviceUIInfo": "sliderVertical",
+        "isAvailable": true,
+        "target": "surroundTrebleLevel",
+        "title": "Surround Treble Level",
+        "titleTextID": "sound-equalizer-surround-treble",
+        "type": "integerTarget"
+      },
+      {
+        "candidate": [
+          {
+            "isAvailable": true,
+            "max": 10,
+            "min": -10,
+            "step": 1
+          }
+        ],
+        "currentValue": "0.0",
+        "deviceUIInfo": "sliderVertical",
+        "isAvailable": false,
+        "target": "heightBassLevel",
+        "title": "Height Bass Level",
+        "titleTextID": "sound-equalizer-height-bass",
+        "type": "integerTarget"
+      },
+      {
+        "candidate": [
+          {
+            "isAvailable": true,
+            "max": 10,
+            "min": -10,
+            "step": 1
+          }
+        ],
+        "currentValue": "0.0",
+        "deviceUIInfo": "sliderVertical",
+        "isAvailable": false,
+        "target": "heightTrebleLevel",
+        "title": "Height Treble Level",
+        "titleTextID": "sound-equalizer-height-treble",
+        "type": "integerTarget"
+      }
+    ]
+  ]
+}

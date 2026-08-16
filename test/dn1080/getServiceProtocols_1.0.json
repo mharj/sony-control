@@ -1,0 +1,32 @@
+{
+  "id": 1,
+  "results": [
+    [
+      "audio",
+      [
+        "xhrpost:jsonizer",
+        "websocket:jsonizer"
+      ]
+    ],
+    [
+      "avContent",
+      [
+        "xhrpost:jsonizer",
+        "websocket:jsonizer"
+      ]
+    ],
+    [
+      "guide",
+      [
+        "xhrpost:jsonizer"
+      ]
+    ],
+    [
+      "system",
+      [
+        "xhrpost:jsonizer",
+        "websocket:jsonizer"
+      ]
+    ]
+  ]
+}

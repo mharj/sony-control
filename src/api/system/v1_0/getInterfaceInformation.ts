@@ -9,6 +9,6 @@ export interface IInterfaceInformation {
 	serverName: string;
 }
 
-export function getInterfaceInformation(id: number, callback: JsonCallback<IInterfaceInformation>) {
-	return callback(PATH, id, 'getInterfaceInformation', [], VER);
+export function getInterfaceInformation_v1_0(callback: JsonCallback<IInterfaceInformation>) {
+	return callback({path: PATH, method: 'getInterfaceInformation', params: [], version: VER});
 }

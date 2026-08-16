@@ -1,4 +1,4 @@
-import type {JsonCallback} from '../../../lib/AbstractApi';
+import type {ApiService, JsonCallback} from '../../../lib/AbstractApi';
 import {PATH, VER} from '.';
 
 interface IApiNameVersions {
@@ -14,8 +14,8 @@ export interface IApiInfo {
 }
 
 /**
- * https://developer.sony.com/develop/audio-control-api/api-references/api-overview-2#_getsupportedapiinfo_v1_0
+ * https://pro-bravia.sony.net/remote-display-control/rest-api/reference/#article-1664
  */
-export function getSupportedApiInfo(id: number, callback: JsonCallback<IApiInfo[]>) {
-	return callback(PATH, id, 'getSupportedApiInfo', [{services: []}], VER);
+export function getSupportedApiInfo(services: ApiService[] | undefined, callback: JsonCallback<IApiInfo[]>) {
+	return callback({path: PATH, method: 'getSupportedApiInfo', params: [{services: services ?? null}], version: VER});
 }

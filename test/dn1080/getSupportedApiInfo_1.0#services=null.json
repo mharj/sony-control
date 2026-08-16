@@ -1,0 +1,645 @@
+{
+  "id": 1,
+  "result": [
+    [
+      {
+        "apis": [
+          {
+            "name": "getCustomEqualizerSettings",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getMethodTypes",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getSoundSettings",
+            "versions": [
+              {
+                "version": "1.1"
+              }
+            ]
+          },
+          {
+            "name": "getSpeakerSettings",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getVersions",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getVolumeInformation",
+            "versions": [
+              {
+                "version": "1.1"
+              }
+            ]
+          },
+          {
+            "name": "setAudioMute",
+            "versions": [
+              {
+                "version": "1.1"
+              }
+            ]
+          },
+          {
+            "name": "setAudioVolume",
+            "versions": [
+              {
+                "version": "1.1"
+              }
+            ]
+          },
+          {
+            "name": "setCustomEqualizerSettings",
+            "versions": [
+              {
+                "authLevel": "generic",
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "setSoundSettings",
+            "versions": [
+              {
+                "version": "1.1"
+              }
+            ]
+          },
+          {
+            "name": "setSpeakerSettings",
+            "versions": [
+              {
+                "authLevel": "generic",
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "switchNotifications",
+            "versions": [
+              {
+                "protocols": [
+                  "websocket:jsonizer"
+                ],
+                "version": "1.0"
+              }
+            ]
+          }
+        ],
+        "notifications": [
+          {
+            "name": "notifyVolumeInformation",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "notifyWirelessSurroundInfo",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          }
+        ],
+        "protocols": [
+          "xhrpost:jsonizer",
+          "websocket:jsonizer"
+        ],
+        "service": "audio"
+      },
+      {
+        "apis": [
+          {
+            "name": "getAvailablePlaybackFunction",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getBluetoothSettings",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getContentCount",
+            "versions": [
+              {
+                "version": "1.3"
+              }
+            ]
+          },
+          {
+            "name": "getContentList",
+            "versions": [
+              {
+                "version": "1.4"
+              }
+            ]
+          },
+          {
+            "name": "getCurrentExternalTerminalsStatus",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getMethodTypes",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getPlaybackModeSettings",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getPlayingContentInfo",
+            "versions": [
+              {
+                "version": "1.2"
+              }
+            ]
+          },
+          {
+            "name": "getSchemeList",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getSourceList",
+            "versions": [
+              {
+                "version": "1.1"
+              },
+              {
+                "version": "1.2"
+              }
+            ]
+          },
+          {
+            "name": "getSupportedPlaybackFunction",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getVersions",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "pausePlayingContent",
+            "versions": [
+              {
+                "version": "1.1"
+              }
+            ]
+          },
+          {
+            "name": "presetBroadcastStation",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "scanPlayingContent",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "seekBroadcastStation",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "setActiveTerminal",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "setBluetoothSettings",
+            "versions": [
+              {
+                "authLevel": "generic",
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "setPlayContent",
+            "versions": [
+              {
+                "version": "1.2"
+              }
+            ]
+          },
+          {
+            "name": "setPlayNextContent",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "setPlayPreviousContent",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "setPlaybackModeSettings",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "startContentBrowsing",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "stopPlayingContent",
+            "versions": [
+              {
+                "version": "1.1"
+              }
+            ]
+          },
+          {
+            "name": "switchNotifications",
+            "versions": [
+              {
+                "protocols": [
+                  "websocket:jsonizer"
+                ],
+                "version": "1.0"
+              }
+            ]
+          }
+        ],
+        "notifications": [
+          {
+            "name": "notifyAvailablePlaybackFunction",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "notifyExternalTerminalStatus",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "notifyPlayingContentInfo",
+            "versions": [
+              {
+                "authLevel": "private",
+                "version": "1.0"
+              }
+            ]
+          }
+        ],
+        "protocols": [
+          "xhrpost:jsonizer",
+          "websocket:jsonizer"
+        ],
+        "service": "avContent"
+      },
+      {
+        "apis": [
+          {
+            "name": "getMethodTypes",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getServiceProtocols",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getSupportedApiInfo",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getVersions",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          }
+        ],
+        "protocols": [
+          "xhrpost:jsonizer"
+        ],
+        "service": "guide"
+      },
+      {
+        "apis": [
+          {
+            "name": "actSWUpdate",
+            "versions": [
+              {
+                "authLevel": "generic",
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "connectBluetoothDevice",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getDeviceMiscSettings",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getInterfaceInformation",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getMethodTypes",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getPowerSettings",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getPowerStatus",
+            "versions": [
+              {
+                "version": "1.1"
+              }
+            ]
+          },
+          {
+            "name": "getSWUpdateInfo",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getSettingsTree",
+            "versions": [
+              {
+                "version": "1.1"
+              }
+            ]
+          },
+          {
+            "name": "getSleepTimerSettings",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getStorageList",
+            "versions": [
+              {
+                "authLevel": "generic",
+                "version": "1.1"
+              },
+              {
+                "version": "1.2"
+              }
+            ]
+          },
+          {
+            "name": "getSystemInformation",
+            "versions": [
+              {
+                "version": "1.3"
+              },
+              {
+                "version": "1.4"
+              }
+            ]
+          },
+          {
+            "name": "getVersions",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "getWuTangInfo",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "setClientInfo",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "setDeviceMiscSettings",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "setPowerSettings",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "setPowerStatus",
+            "versions": [
+              {
+                "version": "1.1"
+              }
+            ]
+          },
+          {
+            "name": "setSleepTimerSettings",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "setWuTangInfo",
+            "versions": [
+              {
+                "authLevel": "generic",
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "switchNotifications",
+            "versions": [
+              {
+                "protocols": [
+                  "websocket:jsonizer"
+                ],
+                "version": "1.0"
+              }
+            ]
+          }
+        ],
+        "notifications": [
+          {
+            "name": "notifyPowerStatus",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "notifySWUpdateInfo",
+            "versions": [
+              {
+                "version": "1.0"
+              }
+            ]
+          },
+          {
+            "name": "notifySettingsUpdate",
+            "versions": [
+              {
+                "version": "1.1"
+              }
+            ]
+          },
+          {
+            "name": "notifyStorageStatus",
+            "versions": [
+              {
+                "authLevel": "generic",
+                "version": "1.1"
+              },
+              {
+                "version": "1.2"
+              }
+            ]
+          }
+        ],
+        "protocols": [
+          "xhrpost:jsonizer",
+          "websocket:jsonizer"
+        ],
+        "service": "system"
+      }
+    ]
+  ]
+}

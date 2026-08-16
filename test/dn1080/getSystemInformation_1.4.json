@@ -1,0 +1,11 @@
+{
+  "id": 1,
+  "result": [
+    {
+      "bdAddr": "94:08:53:73:5f:3a",
+      "macAddr": "94:db:56:fb:3f:8e",
+      "version": "M41.R.0518",
+      "wirelessMacAddr": "94:08:53:73:5f:39"
+    }
+  ]
+}

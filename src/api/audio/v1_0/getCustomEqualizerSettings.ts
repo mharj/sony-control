@@ -1,18 +1,18 @@
 import type {JsonCallback} from '../../../lib/AbstractApi';
 import {PATH, VER} from '.';
 
-interface ICandidate {
+export interface ICustomEqualizerCandidate {
 	isAvailable: boolean;
 	max: number;
 	min: number;
 	step: number;
-	title: string;
-	titleTextID: string;
-	value: string;
+	title?: string;
+	titleTextID?: string;
+	value?: string;
 }
 
 export interface ICustomEqualizerSetting {
-	candidate: ICandidate[];
+	candidate: ICustomEqualizerCandidate[];
 	currentValue: string;
 	deviceUIInfo: string;
 	isAvailable: boolean;
@@ -27,6 +27,6 @@ export interface ICustomEqualizerSetting {
  *
  * Note: Amp have more target types than API Doc says (not doing strict here), API Doc outdated?
  */
-export function getCustomEqualizerSettings(id: number, target: undefined | string, callback: JsonCallback<ICustomEqualizerSetting[]>) {
-	return callback(PATH, id, 'getCustomEqualizerSettings', [{target: target || ''}], VER);
+export function getCustomEqualizerSettings(target: undefined | string, callback: JsonCallback<ICustomEqualizerSetting[]>) {
+	return callback({path: PATH, method: 'getCustomEqualizerSettings', params: [{target: target || ''}], version: VER});
 }
