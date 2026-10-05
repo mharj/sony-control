@@ -7,7 +7,7 @@ export type JsonStringArray = `${JsonString}*` & {__jsonStringArray: true};
 
 export type Arguments = JsonString;
 
-export type Output = JsonString | JsonStringArray
+export type Output = JsonString | JsonStringArray;
 
 export type MethodType = [methodName: string, arguments: [Arguments] | [], output: [Output] | [], version: string];
 

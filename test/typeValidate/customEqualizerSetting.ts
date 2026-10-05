@@ -1,5 +1,5 @@
 import {z} from 'zod';
-import type { ICustomEqualizerCandidate, ICustomEqualizerSetting } from '../../src/api/audio/v1_0/getCustomEqualizerSettings';
+import type {ICustomEqualizerCandidate, ICustomEqualizerSetting} from '../../src/api/audio/v1_0/getCustomEqualizerSettings';
 
 const candidateSchema: z.ZodType<ICustomEqualizerCandidate> = z.object({
 	isAvailable: z.boolean(),
@@ -12,7 +12,7 @@ const candidateSchema: z.ZodType<ICustomEqualizerCandidate> = z.object({
 });
 
 export const customEqualizerSetting: z.ZodType<ICustomEqualizerSetting> = z.object({
-    candidate: z.array(candidateSchema),
+	candidate: z.array(candidateSchema),
 	currentValue: z.string(),
 	deviceUIInfo: z.string(),
 	isAvailable: z.boolean(),
@@ -21,4 +21,3 @@ export const customEqualizerSetting: z.ZodType<ICustomEqualizerSetting> = z.obje
 	titleTextID: z.string(),
 	type: z.string(),
 });
-
