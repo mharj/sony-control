@@ -29,7 +29,7 @@ export class MockFetch {
 		this.fetch = this.fetch.bind(this);
 	}
 	public fetch(input: URL | RequestInfo, init?: RequestInit): Promise<Response> {
-		if (this.#options.clone && !process.env.CI && !process.env.CONTINUOUS_INTEGRATION) {
+		if (this.#options.clone && !process.env.CI) {
 			return this.#cloneFetch(input, init);
 		}
 		return this.#storeFetch(input, init);
