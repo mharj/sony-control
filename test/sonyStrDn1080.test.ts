@@ -13,7 +13,7 @@ import {getStorageList_1_2_schema} from './typeValidate/getStorageList_1.2';
 import {getSystemInformation_1_3_schema} from './typeValidate/getSystemInformation_1_3';
 import {getSystemInformation_1_4_schema} from './typeValidate/getSystemInformation_1_4';
 
-const dn1080Env = process.env.DN1080_URL ?? "http://generic_audio:10000/sony";
+const dn1080Env = process.env.DN1080_URL ?? 'http://generic_audio:10000/sony';
 
 let amp: SonyStrDn1080;
 let apiTest: ApiTester;

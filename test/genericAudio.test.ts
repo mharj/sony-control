@@ -2,7 +2,7 @@ import {beforeAll, beforeEach, describe, expect, it} from 'vitest';
 import {GenericAudio} from '../src/index';
 import {MockFetch} from './testFetch';
 
-const audioUrlEnv = process.env.AUDIO_URL ?? "http://generic_audio:10000/sony";
+const audioUrlEnv = process.env.AUDIO_URL ?? 'http://generic_audio:10000/sony';
 
 let amp: GenericAudio;
 
