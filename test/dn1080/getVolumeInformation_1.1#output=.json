@@ -8,7 +8,7 @@
         "mute": "off",
         "output": "extOutput:zone?zone=1",
         "step": 1,
-        "volume": 22
+        "volume": 32
       },
       {
         "maxVolume": 55,
