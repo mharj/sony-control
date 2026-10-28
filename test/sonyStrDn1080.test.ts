@@ -7,7 +7,7 @@ import {SonyStrDn1080} from '../src/index';
 import type {ApiService} from '../src/lib/AbstractApi';
 import {ApiTester, MockFetch} from './testFetch';
 import {customEqualizerSetting} from './typeValidate/customEqualizerSetting';
-import {serviceProtocolSchema} from './typeValidate/getServiceProtocols';
+import {getServiceProtocolsSchemaV1_0} from './typeValidate/getServiceProtocols_1.0';
 import {getStorageList_1_1_schema} from './typeValidate/getStorageList_1.1';
 import {getStorageList_1_2_schema} from './typeValidate/getStorageList_1.2';
 import {getSystemInformation_1_3_schema} from './typeValidate/getSystemInformation_1_3';
@@ -42,6 +42,12 @@ describe('test Dn1080', () => {
 			expect(e).to.contain.keys(['apis', 'protocols', 'service']);
 		}
 	});
+		it('should return speaker settings', async () => {
+		const speakerSettings = await amp.getSpeakerSettings()
+		for (const e of speakerSettings) {
+			expect(e).to.contain.keys(['candidate', 'currentValue', 'isAvailable', 'target', 'title', 'titleTextID', 'type']);
+		}
+	});
 	it('should return scheme list', async () => {
 		const schemeList = await amp.getSchemeList();
 		for (const e of schemeList) {
@@ -69,14 +75,14 @@ describe('test Dn1080', () => {
 	it('should return customer eq settings', async () => {
 		customEqualizerSetting.array().parse(await amp.getCustomEqualizerSettings());
 	});
-	it.each(['guide'] satisfies ApiService[])('should return api information for %s', async (source) => {
+	it.each(['guide', 'audio'] satisfies ApiService[])('should return api information for %s', async (source) => {
 		const apiInfo = await amp.getSupportedApiInfo([source]);
 		for (const e of apiInfo) {
 			expect(e).to.contain.keys(['apis', 'protocols', 'service']);
 		}
 	});
 	it('should return service protocols', async () => {
-		serviceProtocolSchema.array().parse(await amp.getServiceProtocols());
+		getServiceProtocolsSchemaV1_0.array().parse(await amp.getServiceProtocols());
 	});
 	it('should return method types', async () => {
 		const methodTypes = await amp.getMethodTypes();

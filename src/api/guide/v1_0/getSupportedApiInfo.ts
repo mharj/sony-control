@@ -8,7 +8,7 @@ interface IApiNameVersions {
 
 export interface IApiInfo {
 	apis: IApiNameVersions[];
-	notifications: IApiNameVersions[];
+	notifications?: IApiNameVersions[];
 	protocols: string[];
 	service: string;
 }

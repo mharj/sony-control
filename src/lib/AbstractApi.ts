@@ -9,7 +9,7 @@ export type ApiService = (typeof apiServices)[number];
 export type JsonRpcArgs = {
 	path: ApiService;
 	method: string;
-	params: object[] | [''];
+	params: object[] | [string];
 	version: string;
 };
 
