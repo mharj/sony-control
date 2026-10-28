@@ -42,8 +42,8 @@ describe('test Dn1080', () => {
 			expect(e).to.contain.keys(['apis', 'protocols', 'service']);
 		}
 	});
-		it('should return speaker settings', async () => {
-		const speakerSettings = await amp.getSpeakerSettings()
+	it('should return speaker settings', async () => {
+		const speakerSettings = await amp.getSpeakerSettings();
 		for (const e of speakerSettings) {
 			expect(e).to.contain.keys(['candidate', 'currentValue', 'isAvailable', 'target', 'title', 'titleTextID', 'type']);
 		}
@@ -89,11 +89,11 @@ describe('test Dn1080', () => {
 		console.log(methodTypes);
 		expect(methodTypes).to.be.an('array');
 	});
-	it('should return system information', async () => {
+	it('should return system information v1.3', async () => {
 		const systemInfo = await apiTest.runCall((cb) => getSystemInformation_v1_3(cb));
 		getSystemInformation_1_3_schema.parse(systemInfo);
 	});
-	it('should return system information', async () => {
+	it('should return system information v1.4', async () => {
 		const systemInfo = await apiTest.runCall((cb) => getSystemInformation_v1_4(cb));
 		getSystemInformation_1_4_schema.parse(systemInfo);
 	});

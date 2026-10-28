@@ -1,4 +1,5 @@
 import {getCustomEqualizerSettings} from '../api/audio/v1_0/getCustomEqualizerSettings';
+import {getSpeakerSettings} from '../api/audio/v1_0/getSpeakerSettings';
 import {getSoundSettings} from '../api/audio/v1_1/getSoundSettings';
 import {getVolumeInformation} from '../api/audio/v1_1/getVolumeInformation';
 import {setAudioMute} from '../api/audio/v1_1/setAudioMute';
@@ -15,15 +16,14 @@ import {type IPlayContentParams, setPlayContent} from '../api/avContent/v1_2/set
 import {getServiceProtocols} from '../api/guide/v1_0/getServiceProtocols';
 import {getSupportedApiInfo} from '../api/guide/v1_0/getSupportedApiInfo';
 import {getInterfaceInformation_v1_0} from '../api/system/v1_0/getInterfaceInformation';
-import {getSystemMethodTypes} from '../api/system/v1_0/getSystemMethodTypes';
 import {getPowerSettings_v1_0} from '../api/system/v1_0/getPowerSettings';
+import {getSystemMethodTypes} from '../api/system/v1_0/getSystemMethodTypes';
 import {type SetPowerSettingParams_v1_0, setPowerSettings_v1_0} from '../api/system/v1_0/setPowerSettings';
 import {getPowerStatus} from '../api/system/v1_1/getPowerStatus';
 import {setPowerStatus} from '../api/system/v1_1/setPowerStatus';
 import {type GetStorageListParams_v1_2, getStorageList_v1_2} from '../api/system/v1_2/getStorageList';
 import {getSystemInformation_v1_4} from '../api/system/v1_4/getSystemInformation';
 import {AbstractApi, type ApiService} from '../lib/AbstractApi';
-import {getSpeakerSettings} from '../api/audio/v1_0/getSpeakerSettings';
 
 /**
  * this maps DN1080 to correct API version calls
