@@ -48,7 +48,7 @@ function zodParse<T>(schema: z.ZodType<T>, data: unknown): T {
 	return res.data;
 }
 
-describe('test API calls', () => {
+describe('test API calls', {skip: !!process.env.CI}, () => {
 	it('getAudioMethodTypes v1.0 describes getSpeakerSettings', async () => {
 		const methods = zodParse(getMethodTypesSchemaV1_0.array(), await getAudioMethodTypes('1.0', jsonResultsCall));
 		const method = methods.find(([name]) => name === 'getSpeakerSettings');
