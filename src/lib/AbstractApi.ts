@@ -67,7 +67,7 @@ export abstract class AbstractApi {
 			throw new AudioApiError(method, ...response.error);
 		}
 		if (!isResult(response)) {
-			console.error(`Invalid response: ${JSON.stringify(response)}`);
+			console.error(`Invalid response: ${path} ${version} ${method}\n${JSON.stringify(response)}`);
 			throw new Error('not valid result');
 		}
 		return response.result[0];
@@ -92,7 +92,7 @@ export abstract class AbstractApi {
 			throw new AudioApiError(method, ...response.error);
 		}
 		if (!isResults(response)) {
-			console.error(`Invalid response: ${JSON.stringify(response)}`);
+			console.error(`Invalid response: ${path} ${version} ${method}\n${JSON.stringify(response)}`);
 			throw new Error('not valid result');
 		}
 		return response.results;

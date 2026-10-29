@@ -6,7 +6,7 @@ export default defineConfig({
 	},
 	plugins: [],
 	test: {
-		reporters: ['verbose', 'github-actions'],
+		reporters: ['minimal', 'github-actions'],
 		coverage: {
 			exclude: ['**/dist/**', '**/test/**', '**/*.test-d.ts', '**/index.ts'],
 			include: ['**/*.ts'],

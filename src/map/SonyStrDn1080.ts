@@ -1,5 +1,6 @@
 import {getCustomEqualizerSettings} from '../api/audio/v1_0/getCustomEqualizerSettings';
 import {getSpeakerSettings} from '../api/audio/v1_0/getSpeakerSettings';
+import {type SetSpeakerSettingParams, setSpeakerSettings} from '../api/audio/v1_0/setSpeakerSettings';
 import {getSoundSettings} from '../api/audio/v1_1/getSoundSettings';
 import {getVolumeInformation} from '../api/audio/v1_1/getVolumeInformation';
 import {setAudioMute} from '../api/audio/v1_1/setAudioMute';
@@ -34,6 +35,9 @@ import {AbstractApi, type ApiService} from '../lib/AbstractApi';
 export abstract class AbstractSonyStrDn1080 extends AbstractApi {
 	public getSpeakerSettings(target?: string) {
 		return getSpeakerSettings(target, this.jsonFirstResultCall);
+	}
+	public setSpeakerSettings(settings: SetSpeakerSettingParams[]) {
+		return setSpeakerSettings(settings, this.jsonFirstResultCall);
 	}
 	public setPlayPreviousContent(output?: string) {
 		return setPlayPreviousContent(output, this.jsonFirstResultCall);

@@ -1,0 +1,106 @@
+{
+  "id": 1,
+  "results": [
+    [
+      "getCustomEqualizerSettings",
+      [
+        "{\"target\":\"string\"}"
+      ],
+      [
+        "{\"target\":\"string\", \"currentValue\":\"string\", \"deviceUIInfo\":\"string\", \"title\":\"string\", \"titleTextID\":\"string\", \"type\":\"string\", \"isAvailable\":\"Boolean\", \"candidate\":\"GeneralSettingsCandidate[]\"}*"
+      ],
+      "1.0"
+    ],
+    [
+      "getMethodTypes",
+      [
+        "string"
+      ],
+      [
+        "string",
+        "string*",
+        "string*",
+        "string"
+      ],
+      "1.0"
+    ],
+    [
+      "getSpeakerSettings",
+      [
+        "{\"target\":\"string\"}"
+      ],
+      [
+        "{\"target\":\"string\", \"currentValue\":\"string\", \"deviceUIInfo\":\"string\", \"title\":\"string\", \"titleTextID\":\"string\", \"type\":\"string\", \"isAvailable\":\"Boolean\", \"candidate\":\"GeneralSettingsCandidate[]\"}*"
+      ],
+      "1.0"
+    ],
+    [
+      "getVersions",
+      [],
+      [
+        "string*"
+      ],
+      "1.0"
+    ],
+    [
+      "setCustomEqualizerSettings",
+      [
+        "{\"settings\":\"GeneralSettings[]\"}"
+      ],
+      [],
+      "1.0"
+    ],
+    [
+      "setSpeakerSettings",
+      [
+        "{\"settings\":\"GeneralSettings[]\"}"
+      ],
+      [],
+      "1.0"
+    ],
+    [
+      "getSoundSettings",
+      [
+        "{\"target\":\"string\"}"
+      ],
+      [
+        "{\"target\":\"string\", \"currentValue\":\"string\", \"deviceUIInfo\":\"string\", \"title\":\"string\", \"titleTextID\":\"string\", \"type\":\"string\", \"isAvailable\":\"Boolean\", \"candidate\":\"GeneralSettingsCandidate[]\"}*"
+      ],
+      "1.1"
+    ],
+    [
+      "getVolumeInformation",
+      [
+        "{\"output\":\"string\"}"
+      ],
+      [
+        "{\"output\":\"string\", \"volume\":\"int\", \"mute\":\"string\", \"maxVolume\":\"int\", \"minVolume\":\"int\", \"step\":\"int\"}*"
+      ],
+      "1.1"
+    ],
+    [
+      "setAudioMute",
+      [
+        "{\"output\":\"string\", \"mute\":\"string\"}"
+      ],
+      [],
+      "1.1"
+    ],
+    [
+      "setAudioVolume",
+      [
+        "{\"output\":\"string\", \"volume\":\"string\"}"
+      ],
+      [],
+      "1.1"
+    ],
+    [
+      "setSoundSettings",
+      [
+        "{\"settings\":\"GeneralSettings[]\"}"
+      ],
+      [],
+      "1.1"
+    ]
+  ]
+}

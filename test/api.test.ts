@@ -1,11 +1,12 @@
-import {describe, expect, it} from 'vitest';
+import {afterAll, describe, expect, it} from 'vitest';
 import {z} from 'zod';
-import {getAudioMethodTypes} from '../src/api/audio/v1_0/getAudioMethodTypes';
-import {getSpeakerSettings} from '../src/api/audio/v1_0/getSpeakerSettings';
+import {getAudioMethodTypesV1_0} from '../src/api/audio/v1_0/getAudioMethodTypes';
+import {getSpeakerSettings, type ISpeakerSetting} from '../src/api/audio/v1_0/getSpeakerSettings';
+import {setSpeakerSettings} from '../src/api/audio/v1_0/setSpeakerSettings';
 import {getGuideMethodTypes} from '../src/api/guide/v1_0/getGuideMethodTypes';
+import {getVersions} from '../src/api/guide/v1_0/getGuideVersions';
 import {getServiceProtocols} from '../src/api/guide/v1_0/getServiceProtocols';
 import {getSupportedApiInfo} from '../src/api/guide/v1_0/getSupportedApiInfo';
-import {getVersions} from '../src/api/guide/v1_0/getVersions';
 import {isResult, isResults} from '../src/lib';
 import type {JsonRpcArgs} from '../src/lib/AbstractApi';
 import {AudioApiError, isError} from '../src/lib/error';
@@ -17,7 +18,7 @@ import {getVersionsSchemaV1_0} from './typeValidate/getVersions_1.0';
 
 const audioUrlEnv = process.env.AUDIO_URL ?? 'http://generic_audio:10000/sony';
 
-async function jsonResultsCall<T>({path, method, params, version}: JsonRpcArgs): Promise<T[]> {
+async function jsonRpcCall({path, method, params, version}: JsonRpcArgs) {
 	const response = await fetch(`${audioUrlEnv}/${path}`, {
 		method: 'POST',
 		headers: {'Content-Type': 'application/json'},
@@ -31,13 +32,25 @@ async function jsonResultsCall<T>({path, method, params, version}: JsonRpcArgs):
 	if (isError(payload)) {
 		throw new AudioApiError(method, ...payload.error);
 	}
+	return payload;
+}
+
+async function jsonResultsCall<T>(args: JsonRpcArgs): Promise<T[]> {
+	const payload = await jsonRpcCall(args);
 	if (isResult(payload) && Array.isArray(payload.result[0])) {
 		return payload.result[0];
 	}
 	if (!isResults(payload)) {
-		throw new Error(`${method}: invalid results response: ${JSON.stringify(payload)}`);
+		throw new Error(`${args.method}: invalid results response: ${JSON.stringify(payload)}`);
 	}
 	return payload.results;
+}
+
+async function jsonVoidCall(args: JsonRpcArgs): Promise<void> {
+	const payload = await jsonRpcCall(args);
+	if (!Array.isArray(payload.result) || payload.result.length !== 0) {
+		throw new Error(`${args.method}: invalid void response: ${JSON.stringify(payload)}`);
+	}
 }
 
 function zodParse<T>(schema: z.ZodType<T>, data: unknown): T {
@@ -48,13 +61,41 @@ function zodParse<T>(schema: z.ZodType<T>, data: unknown): T {
 	return res.data;
 }
 
+let orgSubwooferLevelSettings: ISpeakerSetting | undefined;
+
+async function readSubwooferSpeakerSetting() {
+	const data = zodParse(getSpeakerSettingsSchemaV1_0.array(), await getSpeakerSettings('subwooferLevel', jsonResultsCall)).find(
+		(entry) => entry.target === 'subwooferLevel',
+	);
+	if (!data) {
+		throw new Error('subwooferLevel was not returned by the amp');
+	}
+	return data;
+}
+
 describe('test API calls', {skip: !!process.env.CI}, () => {
+	it('setSpeakerSettings v1.0 changes subwooferLevel and restores its original value', async () => {
+		const target = 'subwooferLevel';
+		orgSubwooferLevelSettings = await readSubwooferSpeakerSetting();
+		expect(orgSubwooferLevelSettings.isAvailable).toBe(true);
+		const range = orgSubwooferLevelSettings.candidate.find((candidate) => candidate.isAvailable && candidate.step !== undefined);
+		if (range?.min === undefined || range.max === undefined || range.step === undefined || range.step <= 0) {
+			throw new Error('subwooferLevel has no usable numeric range');
+		}
+		const originalValue = Number(orgSubwooferLevelSettings.currentValue);
+		expect(Number.isFinite(originalValue)).toBe(true);
+		const temporaryValue = originalValue - range.step >= range.min ? originalValue - range.step : originalValue + range.step;
+		expect(temporaryValue).toBeGreaterThanOrEqual(range.min);
+		expect(temporaryValue).toBeLessThanOrEqual(range.max);
+		expect(temporaryValue).not.toBe(originalValue);
+		await setSpeakerSettings([{target, value: String(temporaryValue)}], jsonVoidCall);
+		await expect.poll(async () => Number((await readSubwooferSpeakerSetting()).currentValue), {timeout: 5000}).toBe(temporaryValue);
+	}, 40000);
 	it('getAudioMethodTypes v1.0 describes getSpeakerSettings', async () => {
-		const methods = zodParse(getMethodTypesSchemaV1_0.array(), await getAudioMethodTypes('1.0', jsonResultsCall));
+		const methods = zodParse(getMethodTypesSchemaV1_0.array(), await getAudioMethodTypesV1_0('1.0', jsonResultsCall));
 		const method = methods.find(([name]) => name === 'getSpeakerSettings');
 		expect(method?.[1]).toEqual(['{"target":"string"}']);
 		expect(method?.[3]).toBe('1.0');
-		console.info('audio getSpeakerSettings signature:', JSON.stringify(method));
 	}, 10000);
 	it.each([undefined, 'speakerSelection', 'frontLLevel'])(
 		'getSpeakerSettings v1.0 validates target %s',
@@ -66,7 +107,6 @@ describe('test API calls', {skip: !!process.env.CI}, () => {
 					expect(setting.target).toBe(target);
 				}
 			}
-			console.info('audio getSpeakerSettings targets:', JSON.stringify(settings.map((setting) => setting.target)));
 		},
 		10000,
 	);
@@ -78,12 +118,10 @@ describe('test API calls', {skip: !!process.env.CI}, () => {
 	}, 10000);
 	it('getVersions v1.0 returns the guide service versions', async () => {
 		const versions = zodParse(getVersionsSchemaV1_0, await getVersions(jsonResultsCall));
-		console.info('guide getVersions v1.0:', JSON.stringify(versions));
 		expect(versions).toContain('1.0');
 	}, 10000);
 	it('getMethodTypes v1.0 returns the guide method type tuples', async () => {
 		const methods = zodParse(getMethodTypesSchemaV1_0.array(), await getGuideMethodTypes(undefined, jsonResultsCall));
-		console.info('guide getMethodTypes v1.0:', JSON.stringify(methods, null, 2));
 		expect(methods.map(([method]) => method)).toEqual(expect.arrayContaining(['getMethodTypes', 'getServiceProtocols', 'getSupportedApiInfo', 'getVersions']));
 	}, 10000);
 	it('getMethodTypes v1.0 accepts an API version filter', async () => {
@@ -99,5 +137,10 @@ describe('test API calls', {skip: !!process.env.CI}, () => {
 			message: 'getMethodTypes: getVersions',
 			code: 14,
 		});
+	}, 10000);
+	afterAll(async () => {
+		if (orgSubwooferLevelSettings) {
+			await setSpeakerSettings([{target: 'subwooferLevel', value: orgSubwooferLevelSettings.currentValue}], jsonVoidCall);
+		}
 	}, 10000);
 });

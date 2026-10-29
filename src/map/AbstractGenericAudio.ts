@@ -1,3 +1,4 @@
+import {getAudioMethodTypesV1_0} from '../api/audio/v1_0/getAudioMethodTypes';
 import {getCustomEqualizerSettings} from '../api/audio/v1_0/getCustomEqualizerSettings';
 import {getSoundSettings} from '../api/audio/v1_1/getSoundSettings';
 import {getVolumeInformation} from '../api/audio/v1_1/getVolumeInformation';
@@ -27,6 +28,9 @@ import {AbstractApi, type ApiService} from '../lib/AbstractApi';
  */
 
 export abstract class AbstractGenericAudio extends AbstractApi {
+	public getAudioMethodTypes(apiVersion = '') {
+		return getAudioMethodTypesV1_0(apiVersion, this.jsonResultsCall);
+	}
 	public setPlayPreviousContent(output?: string) {
 		return setPlayPreviousContent(output, this.jsonFirstResultCall);
 	}

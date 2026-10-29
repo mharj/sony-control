@@ -50,7 +50,7 @@ export class MockFetch {
 				console.warn(`Response contains error: ${JSON.stringify(output)}`);
 				return response;
 			}
-			await writeFile(join(this.#options.storeDirectory, this.#buildFileName(body)), JSON.stringify(await response.clone().json(), null, 2));
+			await writeFile(join(this.#options.storeDirectory, this.#buildFileName(req.url,body)), JSON.stringify(await response.clone().json(), null, 2));
 		}
 		return response;
 	}
@@ -58,7 +58,7 @@ export class MockFetch {
 		const req = input instanceof Request ? input : new Request(input, init);
 		const body = await req.clone().json();
 		assertBody(body);
-		const filePath = join(this.#options.storeDirectory, this.#buildFileName(body));
+		const filePath = join(this.#options.storeDirectory, this.#buildFileName(req.url, body));
 		// check file path, else 404
 		if (!existsSync(filePath)) {
 			return new Response(JSON.stringify({error: 'File not found'}), {status: 404, headers: {'content-type': 'application/json'}});
@@ -66,7 +66,10 @@ export class MockFetch {
 		return new Response(await readFile(filePath, 'utf-8'), {status: 200, headers: {'content-type': 'application/json'}});
 	}
 
-	#buildFileName(body: ApiBody): string {
+	#buildFileName(url: string, body: ApiBody): string {
+		const urlObj = new URL(url);
+		// get first part of the path as a prefix for the file name
+		const basePath = urlObj.pathname.split('/')[2] ?? '';
 		const paramSetup = body.params.reduce<string[]>((acc, param) => {
 			acc.push(
 				Object.entries(param)
@@ -81,7 +84,7 @@ export class MockFetch {
 			return acc;
 		}, []);
 		const params = paramSetup.length > 0 ? `#${paramSetup.join('#')}` : '';
-		return `${body.method}_${body.version}${params}.json`;
+		return `${basePath}_${body.version}_${body.method}${params}.json`;
 	}
 }
 

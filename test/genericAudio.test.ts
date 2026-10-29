@@ -13,6 +13,10 @@ describe('test Generic Audio', () => {
 	beforeEach(() => {
 		amp.resetIdCounter();
 	});
+	it('should return audio method types', async () => {
+		const methods = await amp.getAudioMethodTypes();
+		expect(methods).to.be.an('array');
+	});
 	it('should return interface information', async () => {
 		const interfaceInfo = await amp.getInterfaceInformation();
 		expect(interfaceInfo).to.have.all.keys(['interfaceVersion', 'modelName', 'productCategory', 'productName', 'serverName']);

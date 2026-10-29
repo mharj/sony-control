@@ -86,7 +86,6 @@ describe('test Dn1080', () => {
 	});
 	it('should return method types', async () => {
 		const methodTypes = await amp.getMethodTypes();
-		console.log(methodTypes);
 		expect(methodTypes).to.be.an('array');
 	});
 	it('should return system information v1.3', async () => {
