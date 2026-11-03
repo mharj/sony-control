@@ -50,7 +50,7 @@ export class MockFetch {
 				console.warn(`Response contains error: ${JSON.stringify(output)}`);
 				return response;
 			}
-			await writeFile(join(this.#options.storeDirectory, this.#buildFileName(req.url,body)), JSON.stringify(await response.clone().json(), null, 2));
+			await writeFile(join(this.#options.storeDirectory, this.#buildFileName(req.url, body)), JSON.stringify(await response.clone().json(), null, 2));
 		}
 		return response;
 	}
